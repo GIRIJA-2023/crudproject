@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import EmpTable from "./components/EmpTable"
+import EmpForm from "./components/EmpForm";
+import EmpEdit from "./components/EmpEdit";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import "./index.css";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div> 
+    <BrowserRouter>
+    <Routes>
+      <Route path="/"  element= {<EmpTable/>}></Route>
+      <Route path="/EmpForm" element={<EmpForm/>}></Route>
+      <Route path="/EmpEdit/:userName" element={<EmpEdit/>}></Route>
+      </Routes>
+      </BrowserRouter>
+    
+   
+    
+       
+   </div>
   );
 }
 
