@@ -6,16 +6,17 @@ import { useNavigate } from "react-router-dom";
 
 function EmpTable() {
     const [employee, empdata] = useState(null);
+
     const navigate = useNavigate();
 
 
     useEffect(() => {
         axios.get('https://gcrudapi.azurewebsites.net/api/User').then((response) => {
             empdata(response.data);
-            
+
         })
         // console.log(employee);
-    },[])
+    }, [])
 
 
     const removedata = (removeitem) => {
@@ -34,12 +35,13 @@ function EmpTable() {
 
 
 
+
     return (
         <div className="container-fluid mt-3">
 
 
             {/* <div className="container-fluid mt-3 text-center"> */}
-                <h2 className="text-center">Employee Listing</h2>
+            <h2 className="text-center">Employee Listing</h2>
             {/* </div> */}
 
 
