@@ -213,7 +213,7 @@ function EmpEdit() {
                                 <div className="form-group">
                                     <label>Gender</label>
                                     <br></br>
-                                    <input type="radio" id="male" name="gender" value="male" checked={gender === "male"} onChange={changegender} className="app-check"></input>
+                                    <input type="radio" id="male" name="gender" value="male" checked={gender === "Male"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Male</label>
                                     <input type="radio" id="female" name="gender" value="female" checked={gender === "female"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Female</label>
