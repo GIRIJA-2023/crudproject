@@ -7,7 +7,7 @@ import "./index.css";
 function App() {
   return (
    <div> 
-    <BrowserRouter>
+    <BrowserRouter basename="crudproject">
     <Routes>
       <Route path="/"  element= {<EmpTable/>}></Route>
       <Route path="/EmpForm" element={<EmpForm/>}></Route>
