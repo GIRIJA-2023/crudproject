@@ -184,7 +184,7 @@ function EmpEdit() {
                             <div className="col-lg-6 mb-3">
                                 <div className="form-group">
                                     <label>Country<span className="errmsg">*</span></label>
-                                    <select className="form-control" value={details?.country} onChange={changecountry} id="country">
+                                    <select className="form-control" value={countryinfo || details?.country} onChange={changecountry} id="country">
 
                                         {country.map((info) => (
                                             <option key={info.name.common} value={info.name.common}>
