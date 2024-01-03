@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as yup from 'yup';
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 function EmpEdit() {
     const navigate = useNavigate();
@@ -27,6 +27,7 @@ function EmpEdit() {
     useEffect(() => {
         axios.get(`https://restcountries.com/v3.1/all?fields=name,flags`).then((response) => {
             setcountry(response.data);
+            
 
         })
 
@@ -38,6 +39,11 @@ function EmpEdit() {
     useEffect(() => {
         axios.get(`https://gcrudapi.azurewebsites.net/api/User/${userName}`).then((response) => {
             setdetails(response.data);
+            setgender(response.data.gender);
+        setcountryinfo(response.data.country);
+            // console.log(response.data.country);
+            
+           
 
         })
 
@@ -79,7 +85,7 @@ function EmpEdit() {
             gender: e.target.elements.gender.value
 
         };
-
+        
 
         try {
             await userValidate.validate(formData, { abortEarly: false });
@@ -91,7 +97,7 @@ function EmpEdit() {
                 contactNo: document.getElementById('contact').value,
                 country: document.getElementById('country').value,
                 address: document.getElementById('address').value,
-                gender: document.getElementById('male').checked ? "Male" : document.getElementById('female').checked ? "female" : ''
+                gender: document.getElementById('male').checked ? "male" : document.getElementById('female').checked ? "female" : ''
 
             };
 
@@ -174,7 +180,7 @@ function EmpEdit() {
                             <div className="col-lg-6 mb-3">
                                 <div className="form-group">
                                     <label>Country<span className="errmsg">*</span></label>
-                                    <select className="form-control" value={details?.countryinfo} onChange={changecountry} id="country">
+                                    <select className="form-control" value={details?.country} onChange={changecountry} id="country">
 
                                         {country.map((info) => (
                                             <option key={info.name.common} value={info.name.common}>
@@ -203,9 +209,9 @@ function EmpEdit() {
                                 <div className="form-group">
                                     <label>Gender</label>
                                     <br></br>
-                                    <input type="radio" id="male" name="gender" value="male" checked={gender == "male"} onChange={changegender} className="app-check"></input>
+                                    <input type="radio" id="male" name="gender" value="male" checked={gender === "male"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Male</label>
-                                    <input type="radio" id="female" name="gender" value="female" checked={gender == "female"} onChange={changegender} className="app-check"></input>
+                                    <input type="radio" id="female" name="gender" value="female" checked={gender === "female"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Female</label>
                                 </div>
                                 {errors.gender && <span className="error-message">{errors.gender}</span>}
@@ -216,7 +222,7 @@ function EmpEdit() {
 
                     <div className="card-footer text-center">
                         <button type="submit" className="btn btn-primary me-4">Register</button>
-                        <a class="btn btn-danger">Back</a>
+                        <Link to="/" className="btn btn-danger">Back</Link>
                     </div>
                 </div>
             </form>

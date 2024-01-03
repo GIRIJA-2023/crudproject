@@ -6,7 +6,7 @@ import * as yup from "yup";
 function EmpForm() {
     const navigate = useNavigate();
     const [country, setcountry] = useState([]);
-    const [countryinfo, setcountryinfo] = useState('');
+    const [countryinfo, setcountryinfo] = useState('India');
     const [formErrors, setFormErrors] = useState({});
     // const [values,setvalues]=useState({username:'',password:'',fullname:'',gender:'',email:'',contactNo:'',address:'',country:''});
 
