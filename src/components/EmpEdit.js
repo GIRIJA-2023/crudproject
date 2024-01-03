@@ -5,11 +5,11 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 
 function EmpEdit() {
     const navigate = useNavigate();
-    const [details, setdetails] = useState(null);
-    const [gender, setgender] = useState('');
-    const [country, setcountry] = useState([]);
-    const [countryinfo, setcountryinfo] = useState('');
-    const [errors, setformerrors] = useState({});
+    const [details,setdetails] = useState(null);
+    const [gender,setgender] = useState('');
+    const [country,setcountry] = useState([]);
+    const [countryinfo,setcountryinfo] = useState('');
+    const [errors,setformerrors] = useState({});
 
     const userValidate = yup.object().shape({
         name: yup.string().required('Username is required'),
@@ -38,16 +38,19 @@ function EmpEdit() {
 
     useEffect(() => {
         axios.get(`https://gcrudapi.azurewebsites.net/api/User/${userName}`).then((response) => {
+            console.log(response.data.gender);
             setdetails(response.data);
+        
             setgender(response.data.gender);
-        setcountryinfo(response.data.country);
-            // console.log(response.data.country);
+            console.log(gender);
             
-           
-
+            setcountryinfo(response.data.country);
+            
+            
         })
+       
 
-    }, [])
+    },[userName])
 
     // function Changetext (e){
     //   setdetails(e.target.value);
@@ -67,6 +70,7 @@ function EmpEdit() {
 
     function changegender(e) {
         setgender(e.target.value);
+
     }
 
 
@@ -209,7 +213,7 @@ function EmpEdit() {
                                 <div className="form-group">
                                     <label>Gender</label>
                                     <br></br>
-                                    <input type="radio" id="male" name="gender" value="male" checked={gender === "male"} onChange={changegender} className="app-check"></input>
+                                    <input type="radio" id="male" name="gender" value="male" checked={gender === "Male"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Male</label>
                                     <input type="radio" id="female" name="gender" value="female" checked={gender === "female"} onChange={changegender} className="app-check"></input>
                                     <label className="radio-font">Female</label>

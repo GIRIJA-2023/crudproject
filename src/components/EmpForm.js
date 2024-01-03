@@ -48,7 +48,7 @@ function EmpForm() {
                 contactNo: document.getElementById('contact').value,
                 country: document.getElementById('country').value,
                 address: document.getElementById('address').value,
-                gender: document.getElementById('male').checked ? "Male" : document.getElementById('female').checked ? "female" : ''
+                gender: document.getElementById('male').checked ? "male" : document.getElementById('female').checked ? "female" : ''
             };
 
             registerdata(data);
@@ -85,6 +85,7 @@ function EmpForm() {
     useEffect(() => {
         axios.get(`https://restcountries.com/v3.1/all?fields=name,flags`).then((response) => {
             setcountry(response.data);
+            
 
         })
 
